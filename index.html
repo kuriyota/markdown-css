@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<head>
+</head>
+
+<body>
+    <main class="markdown-body"></main>
+    <script type="module">
+        import './index.css'
+        import markdownIt from 'markdown-it'
+        import text from './test.md?raw'
+        let md = markdownIt()
+        let html = md.render(text)
+        document.querySelector('main').innerHTML = html
+    </script>
+</body>
+
+<style>
+
+</style>
