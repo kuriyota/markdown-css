@@ -1,232 +1,135 @@
----
-__Advertisement :)__
+# Markdown 全元素测试文档
 
-- __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
-resize in browser.
-- __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
-i18n with plurals support and easy syntax.
+## 基础文本样式
 
-You will like those projects!
----
+这是**加粗文字**，这是*斜体文字*，这是~~删除线~~，这是`行内代码`，这是[链接示例](https://example.com)，这是键盘输入：<kbd>Ctrl+S</kbd>
 
-# h1 Heading 8-)
+## 标题测试
 
-## h2 Heading
+# H1 标题
 
-### h3 Heading
+## H2 标题
 
-#### h4 Heading
+### H3 标题
 
-##### h5 Heading
+#### H4 标题
 
-###### h6 Heading
+##### H5 标题
 
-## Horizontal Rules
+###### H6 标题
 
----
+## 列表测试
 
----
+### 无序列表
 
----
+- 一级列表
+  - 二级嵌套列表
+    - 三级嵌套列表
+- 项目包含多种样式：
+  - **加粗项**
+  - _斜体项_
+  - ~~删除项~~
 
-## Typographic replacements
+### 有序列表
 
-Enable typographer option to see result.
+1. 第一项
+2. 第二项
+   1. 嵌套有序项
+   2. 另一个嵌套项
+3. 第三项
 
-(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+## 代码块测试
 
-test.. test... test..... test?..... test!....
-
-!!!!!! ???? ,, -- ---
-
-"Smartypants, double quotes" and 'single quotes'
-
-## Emphasis
-
-**This is bold text**
-
-**This is bold text**
-
-_This is italic text_
-
-_This is italic text_
-
-~~Strikethrough~~
-
-## Blockquotes
-
-> Blockquotes can also be nested...
->
-> > ...by using additional greater-than signs right next to each other...
-> >
-> > > ...or with spaces between arrows.
-
-## Lists
-
-Unordered
-
-- Create a list by starting a line with `+`, `-`, or `*`
-- Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    - Ac tristique libero volutpat at
-    * Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-- Very easy!
-
-Ordered
-
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-
-4. You can use sequential numbers...
-5. ...or keep all the numbers as `1.`
-
-Start numbering with offset:
-
-57. foo
-1. bar
-
-## Code
-
-Inline `code`
-
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-Block code "fences"
-
-```
-Sample text here...
-```
-
-Syntax highlighting
-
-```js
-var foo = function (bar) {
-  return bar++
+```javascript
+function helloWorld() {
+  console.log('Hello, World!')
+  const num = 123
+  return num.toString(16)
 }
-
-console.log(foo(5))
 ```
 
-## Tables
+```python
+def fibonacci(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+```
 
-| Option | Description                                                               |
-| ------ | ------------------------------------------------------------------------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default.    |
-| ext    | extension to be used for dest files.                                      |
+## 表格测试
 
-Right aligned columns
+| 功能   | 语法           | 效果      | 状态    |
+| ------ | -------------- | --------- | ------- |
+| 加粗   | `**text**`     | **示例**  | 支持 ✅ |
+| 斜体   | `*text*`       | _示例_    | 支持 ✅ |
+| 代码块 | `code`         | `代码`    | 支持 ✅ |
+| 链接   | `[title](url)` | [示例](#) | 支持 ✅ |
 
-| Option |                                                               Description |
-| -----: | ------------------------------------------------------------------------: |
-|   data | path to data files to supply the data that will be passed into templates. |
-| engine |    engine to be used for processing templates. Handlebars is the default. |
-|    ext |                                      extension to be used for dest files. |
+## 多媒体元素
 
-## Links
+![替代文字](https://picsum.photos/600/400 '图片标题')
 
-[link text](http://dev.nodeca.com)
+<https://example.com>（自动链接测试）
 
-[link with title](http://nodeca.github.io/pica/demo/ 'title text!')
+## 引用块测试
 
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
-
-## Images
-
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
-
-Like links, Images also have a footnote style syntax
-
-![Alt text][id]
-
-With a reference later in the document defining the URL location:
-
-[id]: https://octodex.github.com/images/dojocat.jpg 'The Dojocat'
-
-## Plugins
-
-The killer feature of `markdown-it` is very effective support of
-[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
-
-### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
-
-> Classic markup: :wink: :cry: :laughing: :yum:
+> 一级引用文本
 >
-> Shortcuts (emoticons): :-) :-( 8-) ;)
+> > 嵌套引用文本
+>
+> 包含**加粗**和`代码`的引用
 
-see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
+## 分割线测试
 
-### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
+---
 
-- 19^th^
-- H~2~O
+---
 
-### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
+## 特殊元素
 
-++Inserted text++
+### 任务列表
 
-### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
+- [x] 已完成任务
+- [ ] 未完成任务
+  - [ ] 嵌套任务
 
-==Marked text==
+### 脚注测试
 
-### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
+这是一个带脚注的文本[^1]，另一个脚注[^2]
 
-Footnote 1 link[^first].
+[^1]: 第一个脚注内容
+[^2]: 第二个脚注内容（包含**格式**和`代码`）
 
-Footnote 2 link[^second].
+### 数学公式
 
-Inline footnote^[Text of inline footnote] definition.
+$$
+f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2 \pi i \xi x} \,d\xi
+$$
 
-Duplicated footnote reference[^second].
+行内公式：$E = mc^2$
 
-[^first]: Footnote **can have markup**
+### 定义列表
 
-    and multiple paragraphs.
+术语 1
+: 定义内容 1
 
-[^second]: Footnote text.
+术语 2
+: 定义内容 2
+: 第二个定义
 
-### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
+## 混合内容测试
 
-Term 1
+1. **列表项包含**：
+   - 嵌套无序列表
+   - `代码` 和 ![小图标](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==)
+2. 表格中的特殊内容：
+   | 列 1 | 列 2 |
+   |-----|-----|
+   | `代码` | **加粗** |
+   | $x^2$ | ![小图标](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==) |
 
-: Definition 1
-with lazy continuation.
+## 长文本测试
 
-Term 2 with _inline markup_
+这是非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的文本，测试自动换行和行高设置。
 
-: Definition 2
-
-        { some code, part of Definition 2 }
-
-    Third paragraph of definition 2.
-
-_Compact style:_
-
-Term 1
-~ Definition 1
-
-Term 2
-~ Definition 2a
-~ Definition 2b
-
-### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
-
-This is HTML abbreviation example.
-
-It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
-
-\*[HTML]: Hyper Text Markup Language
-
-### [Custom containers](https://github.com/markdown-it/markdown-it-container)
-
-::: warning
-_here be dragons_
-:::
+这是非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常非常长的文本，测试自动换行和行高设置。
