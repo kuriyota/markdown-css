@@ -1,55 +1,178 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Dual Theme Previewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --editor-bg: #f8f9fa;
+            --border-color: #e9ecef;
+            --tab-active-bg: #fff;
+            --text-color: #333;
+            --bg-color: #fff
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: system-ui, sans-serif
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto
+        }
+
+        .editor-section,
+        #editor {
+            flex: 1;
+            min-width: 300px
+        }
+
+        #editor {
+            width: 100%;
+            height: calc(100vh - 100px);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            resize: none;
+            font-family: monospace;
+            line-height: 1.6;
+            background-color: var(--editor-bg);
+            color: var(--text-color);
+            padding: 10px
+        }
+
+        .preview-section {
+            flex: 1;
+            min-width: 300px
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .theme-tabs {
+            display: flex;
+            gap: 10px
+        }
+
+        .tab-button {
+            padding: 4px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .tab-button.active {
+            background: var(--tab-active-bg);
+        }
+
+        .preview-container {
+            position: relative;
+            height: calc(100vh - 100px)
+        }
+
+        .markdown-body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: none
+        }
+
+        .markdown-body.active {
+            display: block
+        }
+
+        @media (max-width:767px) {
+            .container {
+                flex-direction: column;
+                padding: 10px
+            }
+
+            #editor {
+                height: 300px
+            }
+
+            .preview-container {
+                height: 400px
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <main>
-        <div class="markdown-body theme-light"></div>
-        <div class="markdown-body theme-dark"></div>
-    </main>
+    <div class="container">
+        <section class="editor-section">
+            <h2 class="section-title">Editor</h2>
+            <textarea id="editor" placeholder="Enter Markdown content..."></textarea>
+        </section>
+        <section class="preview-section">
+            <div class="preview-header">
+                <h2 class="section-title">Preview</h2>
+                <div class="theme-tabs">
+                    <button class="tab-button active" data-theme="light">Light</button>
+                    <button class="tab-button" data-theme="dark">Dark</button>
+                </div>
+            </div>
+            <div class="preview-container">
+                <div class="markdown-body theme-light active"></div>
+                <div class="markdown-body theme-dark"></div>
+            </div>
+        </section>
+    </div>
+
     <script type="module">
+
         import './index.css'
-        import markdownIt from 'markdown-it'
-        import text from './test.md?raw'
-        let md = markdownIt({
-            html: true,
-            linkify: true,
-            typographer: true
-        })
-        let html = md.render(text)
-        let light = document.querySelector('main div:first-child')
-        let dark = document.querySelector('main div:last-child')
-        light.innerHTML = html
-        dark.innerHTML = html
 
-        light.addEventListener('scroll', () => {
-            dark.scrollTop = light.scrollTop
-        })
-        dark.addEventListener('scroll', () => {
-            light.scrollTop = dark.scrollTop
-        })
+        import MarkdownIt from 'markdown-it';
+        const md = MarkdownIt({
+            html: true, linkify: true, typographer: true
+        });
 
+        const editor = document.getElementById('editor');
+        const previews = {
+            light: document.querySelector('.theme-light'),
+            dark: document.querySelector('.theme-dark')
+        };
+
+        import text from './example.md?raw';
+        editor.value = text;
+
+        import 'highlight.js/styles/github.css';
+        import hljs from 'highlight.js';
+
+        const render = () => {
+            previews.light.innerHTML = previews.dark.innerHTML = md.render(editor.value)
+            hljs.highlightAll()
+        };
+
+        editor.addEventListener('input', render);
+        document.querySelectorAll('.tab-button').forEach(tab => tab.addEventListener('click', () => {
+            const theme = tab.dataset.theme;
+            document.querySelectorAll('.tab-button, .markdown-body').forEach(el => el.classList.remove('active'));
+            tab.classList.add('active');
+            previews[theme].classList.add('active');
+        }));
+
+        render();
     </script>
 </body>
 
-<style>
-    * {
-        margin: 0px;
-        padding: 0px;
-        box-sizing: border-box;
-    }
-
-    main {
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-
-        >div {
-            flex: 1;
-            height: 100%;
-            overflow-y: auto;
-        }
-    }
-</style>
+</html>

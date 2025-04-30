@@ -1,16 +1,27 @@
 {
-  "name": "markdown-css",
+  "name": "@cn_chestnut/markdown-css",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple markdown CSS stylesheets by Kuriyota",
+  "main": "index.css",
+  "files": [
+    "index.css"
+  ],
   "scripts": {
     "dev": "vite"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "markdown",
+    "css",
+    "stylesheets"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Kuriyota<kuriyota@outlook.com>",
+  "license": "MIT",
   "dependencies": {
-    "markdown-it": "^14.1.0",
-    "vite": "^6.3.3"
+    "highlight.js": "^11.11.1",
+    "markdown-it": "^13.0.2",
+    "vite": "^4.5.14"
   }
 }

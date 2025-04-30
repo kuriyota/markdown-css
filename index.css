@@ -7,6 +7,9 @@
     color: var(--color-text);
     background-color: var(--color-bg);
     line-height: 1.6;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .markdown-body.theme-light {
@@ -19,7 +22,7 @@
     --color-text: #e0e0e0;
     --color-bg: #222;
     --color-primary: rgb(255, 85, 245);
-    --code-bg: #2d2d2d;
+    --code-bg: #3b3b3b;
 }
 
 .markdown-body * {
@@ -82,8 +85,8 @@
 
 .markdown-body code {
     background-color: var(--code-bg);
-    padding: 4px;
-    border-radius: 4px;
+    padding: 2px;
+    border-radius: 2px;
     font-family: "JetBrains Mono", monospace;
 }
 
